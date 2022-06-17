@@ -1,0 +1,27 @@
+provider: both
+
+server:
+  name: go-db-proxy
+  port: 8080
+
+grpc:
+  name: go-db-grpc
+  port: 8081
+
+sql:
+  driver: mysql
+  data_source_name: root:Bbc@148562@/local?charset=utf8&parseTime=True&loc=Local
+
+log:
+  level: info
+  duration: duration
+  fields: service
+  goroutines: true
+
+middleware:
+  log: true
+  skips: /health
+  request: request
+  response: response
+  constants:
+    service: go-db-client_proxy
